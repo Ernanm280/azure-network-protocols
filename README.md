@@ -6,10 +6,10 @@
 Throughout this tutorial we focus on monitoring and analyzing network traffic between Azure Virtual Machines using Wireshark. It also includes working with Azure Network Security Groups (NSG) to manage and control network traffic. Various protocals such as ICMP, SSH, DHCP, DNS, and RDP are observed within Wireshark to understand how communication happens between systems or Virtual Machines.
 <h2>Environments and Technologies Used</h2>
 
-- Microsoft Azure (Virtual Machines/Compute)
+- Microsoft Azure (Virtual Machines/Compute services)
 - Remote Desktop
 - Various Command-Line Tools
-- Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
+- Different Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
 - Wireshark (Protocol Analyzer)
 
 <h2>Operating Systems Used </h2>
@@ -29,7 +29,9 @@ Throughout this tutorial we focus on monitoring and analyzing network traffic be
 - Observe ping requests and replies within Wireshark.
 - From the Windows 10 VM, open Command Line or PowerShell, and ping a public website (e.g., `www.google.com`).
 - observe the traffic in WireShark
-  
+
+  For this part of the lab, I observed ICMP traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol (RDP) from my Windows computer to connect to the Windows 10 VM in Azure. Once being connected, I installed and opened Wireshark, then started a packet capture and applied the ICMP filter so only ICMP traffic would be shown. Next, I obtained the private IP address of the Linux VM and used Command Prompt on the Windows 10 VM to ping it. While the ping was running, I observed the ICMP echo request and echo reply packets in Wireshark. This is important beacuse it confirmed that communication between the two virtual machines was successful. This allowed me see how ICMP is used to test connectivity between systems within the virtual network.
+
 <img width="1898" height="788" alt="Screenshot 2026-02-24 185452" src="https://github.com/user-attachments/assets/d92f10d2-3ba4-427f-97ff-9a1f1e182b5e" />
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
 <img width="1886" height="915" alt="image" src="https://github.com/user-attachments/assets/eb959b0f-783c-411d-894a-cd462450668f" />
@@ -38,22 +40,22 @@ Throughout this tutorial we focus on monitoring and analyzing network traffic be
 <img width="1902" height="936" alt="image" src="https://github.com/user-attachments/assets/8e2fffb7-5d4c-4480-bd8d-72703a0e6181" />
 
 
-
-
 **2. Configuring a Firewall (Network Security Group)**
-- Initiate a perpetual/non-stop ping from the Windows 10 VM to the Ubuntu VM.
+- Initiate a perpetual/non-stop ping from the Windows 10 VM to the Linux VM.
 - Open the Network Security Group (NSG) associated with the Linux VM and disable inbound ICMP traffic.
 - Return to the Windows 10 VM and observe the ICMP traffic and command line ping activity in Wireshark.
 - Re-enable inbound ICMP traffic in the NSG.
 - Back in the Windows 10 VM, observe the ICMP traffic and ping activity resuming in Wireshark.
 - Stop the ping activity.
+ 
+
+For this part of the lab, I initiated a continuous ping from the Windows 10 VM to the Ubuntu VM using Command Prompt and the `ping -t` command. This caused the ping to run nonstop so I could analyze the traffic in real time in Wireshark. While the ping was running, I disabled inbound ICMP traffic in the Network Security Group linked to the Linux VM. After disabling the rule, I returned to the Windows 10 VM and observed that the ping requests began to fail, and Wireshark showed that reply packets were no longer being received. This confirmed that the NSG was successfully blocking inbound ICMP traffic. I then went back to the NSG settings and re-enabled the inbound ICMP rule. After enabling it again, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again. This demonstrated how Network Security Groups can control and filter network traffic. At the end, I stopped the continuous ping in Command Prompt.
+
 <img width="624" height="555" alt="image" src="https://github.com/user-attachments/assets/fc9719cf-d706-4871-8813-325d3d813736" />
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
 <img width="877" height="548" alt="Screenshot 2026-02-24 193855" src="https://github.com/user-attachments/assets/76b693af-162f-46f1-aa03-07ab91a953f6" />
 <img width="1490" height="576" alt="image" src="https://github.com/user-attachments/assets/0cc8f104-b0eb-459e-9a4b-233500259c2f" />
 <img width="777" height="535" alt="image" src="https://github.com/user-attachments/assets/a5af13de-76ab-416c-b06b-df151b5c6501" />
-
-
 
 
 **3. Observing SSH Traffic**
@@ -65,13 +67,7 @@ Throughout this tutorial we focus on monitoring and analyzing network traffic be
 - Exit the SSH connection by typing `exit` and pressing [Enter].
 <img width="746" height="484" alt="image" src="https://github.com/user-attachments/assets/41e9dc17-1c21-4f78-861f-1005bffa1545" />
 <img width="1221" height="566" alt="Screenshot 2026-02-24 202054" src="https://github.com/user-attachments/assets/09d8b753-4c66-44f3-bea7-886af2b5f5cd" />
-
 <img width="1406" height="826" alt="Screenshot 2026-02-24 201620" src="https://github.com/user-attachments/assets/198ba6a0-08b9-4067-b40b-2fecfcac71fe" />
-
-
-
-
-
 
 
 **4. Observing DHCP Traffic**
@@ -96,13 +92,11 @@ Throughout this tutorial we focus on monitoring and analyzing network traffic be
 <img width="1427" height="984" alt="Screenshot 2026-02-24 205946" src="https://github.com/user-attachments/assets/1673974f-cbb5-407d-b476-4fbb2a0d26b4" />
 
 
-
 **6. Observing RDP Traffic** 
 - Back in Wireshark, filter for RDP traffic using the filter `tcp.port == 3389`.
 - Observe the non-stop traffic being transmitted.
   - Explanation: RDP traffic constantly transmits because it streams a live view from one computer to another, leading to continuous traffic.
 <img width="1151" height="725" alt="image" src="https://github.com/user-attachments/assets/aa932325-279d-4d0e-80fa-2eade25e89de" />
-
 
 
 <h2>Purpose</h2>
