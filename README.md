@@ -27,8 +27,6 @@ Throughout this tutorial we focus on monitoring and analyzing network traffic be
 - Filter for ICMP traffic in Wireshark.
 - Retrieve the private IP address of the Linux VM and attempt to ping it from the Windows 10 VM.
 - Observe ping requests and replies within Wireshark.
-- From the Windows 10 VM, open Command Line or PowerShell, and ping a public website (e.g., `www.google.com`).
-- observe the traffic in WireShark
 
   For this part of the lab, I observed ICMP traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol (RDP) from my Windows computer to connect to the Windows 10 VM in Azure. Once being connected, I installed and opened Wireshark, then started a packet capture and applied the ICMP filter so only ICMP traffic would be shown. Next, I obtained the private IP address of the Linux VM and used Command Prompt on the Windows 10 VM to ping it. While the ping was running, I observed the ICMP echo request and echo reply packets in Wireshark. This is important beacuse it confirmed that communication between the two virtual machines was successful. This allowed me see how ICMP is used to test connectivity between systems within the virtual network.
 
@@ -59,32 +57,28 @@ For this part of the lab, I initiated a continuous ping from the Windows 10 VM t
 
 
 **3. Observing SSH Traffic**
-- In the Windows 10 VM, open Wireshark and start a packet capture.
-- Filter for SSH traffic in Wireshark.
-- Using PowerShell in the Windows 10 VM, SSH into the Ubuntu VM using its private IP address:
-  - `ssh labuser@<private IP address>`
-- Type commands (e.g., username, password) in the Linux SSH session and observe SSH traffic in Wireshark.
-- Exit the SSH connection by typing `exit` and pressing [Enter].
+
+I opened Wireshark on the Windows 10 VM and started a packet capture to observe network traffic. After, I applied a filter for SSH traffic so I could focus only on SSH packets. Next, I opened PowerShell and used the SSH command to connect to the Linux VM using its private IP address and the labuser account. Once connected, I entered the required login information and ran a few commands in the SSH session. While doing this, I observed the SSH traffic in Wireshark and saw the packets being transmitted between the Windows 10 VM and the Linux VM. This demontrates how SSH enables secure remote communication between two systems. After finished observing the traffic, I typed `exit` and pressed Enter to close the SSH connection.
+
+  
 <img width="746" height="484" alt="image" src="https://github.com/user-attachments/assets/41e9dc17-1c21-4f78-861f-1005bffa1545" />
 <img width="1221" height="566" alt="Screenshot 2026-02-24 202054" src="https://github.com/user-attachments/assets/09d8b753-4c66-44f3-bea7-886af2b5f5cd" />
 <img width="1406" height="826" alt="Screenshot 2026-02-24 201620" src="https://github.com/user-attachments/assets/198ba6a0-08b9-4067-b40b-2fecfcac71fe" />
 
 
 **4. Observing DHCP Traffic**
-- Back in Wireshark, filter for DHCP traffic.
-- In the Windows 10 VM, attempt to issue a new IP address using the Command Line:
-  - `ipconfig /renew`
-- Observe DHCP traffic appearing in Wireshark.
+
+I went back to Wireshark and applied a DHCP filter to display only DHCP-related traffic. After setting the filter, I opened Command Prompt on the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the network. While the command was running, I observed DHCP traffic appearing in Wireshark. The capture showed the communication between the virtual machine and the DHCP server as the system requested and received IP configuration information. This demonstrated how DHCP automatically assigns IP addresses and network settings to devices on a network.
+
+  
 <img width="960" height="682" alt="Screenshot 2026-02-24 204137" src="https://github.com/user-attachments/assets/5dad524f-8a8f-469f-b5ed-71913330f7e6" />
 <img width="1242" height="577" alt="Screenshot 2026-02-24 204753" src="https://github.com/user-attachments/assets/41814628-72d3-45a9-a9b2-7b0b100df463" />
 
 
 **5. Observing DNS Traffic**
-- Back in Wireshark, filter for DNS traffic.
-- In the Windows 10 VM, use `nslookup` to resolve the IP addresses of `google.com` and `disney.com`:
-  - `nslookup google.com`
-  - `nslookup disney.com`
-- Observe DNS traffic in Wireshark.
+
+I applied a DNS filter to view only DNS-related traffic. After applying the filter, I opened Command Prompt on the Windows 10 VM and used the `nslookup` command to find the IP addresses of google.com and disney.com. When I entered `nslookup google.com` and `nslookup disney.com`, Wireshark captured the DNS request and response packets. The request showed my computer asking the DNS server for the IP address of each domain, and the response showed the DNS server returning the corresponding IP address. This demonstrated how DNS is used to translate domain names into IP addresses so computers can communicate with each other over the network.
+
 <img width="879" height="533" alt="Screenshot 2026-02-24 205139" src="https://github.com/user-attachments/assets/e3ce49c9-4e38-4c8e-8a22-62dd867e4f02" />
 <img width="473" height="342" alt="Screenshot 2026-02-24 205818" src="https://github.com/user-attachments/assets/f6252881-980c-4e05-8a90-52f74e00f078" />
 <img width="1538" height="865" alt="Screenshot 2026-02-24 205837" src="https://github.com/user-attachments/assets/005ce102-9125-4095-b074-77e40418dfdb" />
@@ -93,9 +87,9 @@ For this part of the lab, I initiated a continuous ping from the Windows 10 VM t
 
 
 **6. Observing RDP Traffic** 
-- Back in Wireshark, filter for RDP traffic using the filter `tcp.port == 3389`.
-- Observe the non-stop traffic being transmitted.
-  - Explanation: RDP traffic constantly transmits because it streams a live view from one computer to another, leading to continuous traffic.
+
+I returned to Wireshark and applied the filter `tcp.port == 3389` to view Remote Desktop Protocol (RDP) traffic. After applying the filter, I observed continuous network traffic between my computer and the Windows 10 VM. This traffic remained active even when I was not typing or clicking anything. This happens because RDP constantly sends data to maintain the remote session and display a live view of the remote computer screen. The continuous transmission ensures that any changes on the remote system, such as mouse movements or screen updates, are shown in real time. This helped me understand how RDP maintains a stable and responsive remote connection.
+
 <img width="1151" height="725" alt="image" src="https://github.com/user-attachments/assets/aa932325-279d-4d0e-80fa-2eade25e89de" />
 
 
