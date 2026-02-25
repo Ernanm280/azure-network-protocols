@@ -3,8 +3,7 @@
 </p>
 
 <h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
-In this tutorial, we observe and inspect various network traffic to and from Azure Virtual Machines using Wireshark. This project also involves experimenting with Azure Network Security Groups (NSGs) to control traffic and analyzing different types of traffic protocols such as ICMP, SSH, DHCP, DNS, and RDP.
-
+Throughout this tutorial we focus on monitoring and analyzing network traffic between Azure Virtual Machines using Wireshark. It also includes working with Azure Network Security Groups (NSG) to manage and control network traffic. Various protocals such as ICMP, SSH, DHCP, DNS, and RDP are observed within Wireshark to understand how communication happens between systems or Virtual Machines.
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
@@ -108,4 +107,5 @@ In this tutorial, we observe and inspect various network traffic to and from Azu
 
 <h2>Purpose</h2>
 
-The purpose of this project is to enhance understanding of network traffic flow and security configurations within cloud environments, providing foundational knowledge for managing and troubleshooting Azure-based networked systems.
+The purpose of this project is to develop a deeper understanding of how network traffic flows within cloud environments and how security configurations help control and protect that traffic. Within the Azure-based systems, this project allows us to analyze how devices communicate with each other between virtual networks and how security tools, such as Network Security Groups, regulate access and data transmission. This also helps us build practical knowledge of how various protocols function and how network activity can be monitored and observed. Lastly this project strengthens troubleshooting skills by allowing to identify, analyze, and resolve network connectivity and security issues. Overall, the project provides foundational experience that is essential for effectively managing, securing, and maintaining cloud-based network infrastructures in Microsoft Azure.
+
