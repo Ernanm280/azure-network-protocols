@@ -20,7 +20,7 @@ Throughout this tutorial, we focus on monitoring and analyzing network traffic b
 <h2>Actions and Observations</h2>
 
 **1. Observing ICMP Traffic**
-- If using Mac, install Microsoft Remote Desktop
+- If using a Mac, install Microsoft Remote Desktop
 - Using RDP, connect to the Windows 10 VM.
 - Install [Wireshark](https://www.wireshark.org) within the Windows 10 VM.
 - Open Wireshark and start a packet capture.
@@ -28,7 +28,7 @@ Throughout this tutorial, we focus on monitoring and analyzing network traffic b
 - Retrieve the private IP address of the Linux VM and attempt to ping it from the Windows 10 VM.
 - Observe ping requests and replies within Wireshark.
 
-For this part of the lab, I observed ICMP traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol (RDP) from my Windows computer to connect to the Windows 10 VM in Azure. Once being connected, I installed and opened Wireshark, then started a packet capture and applied the ICMP filter so only ICMP traffic would be shown. Next, I obtained the private IP address of the Linux VM and used Command Prompt on the Windows 10 VM to ping it. While the ping was running, I observed the ICMP request and reply traffic in Wireshark. This is important beacuse it confirmed that communication between the two virtual machines was successful. This allowed me see how ICMP is used to test connectivity between systems within the virtual network.
+For this part of the lab, I observed ICMP traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol (RDP) from my Windows computer to connect to the Windows 10 VM in Azure. Once connected, I installed and opened Wireshark, then started a packet capture and applied the ICMP filter to show only ICMP traffic. Next, I obtained the private IP address of the Linux VM and used Command Prompt on the Windows 10 VM to ping it. While the ping was running, I observed the ICMP request and reply traffic in Wireshark. This is important because it confirmed that communication between the two virtual machines was successful. This allowed me see how ICMP is used to test connectivity between systems within the virtual network.
 
 <img width="1898" height="788" alt="Screenshot 2026-02-24 185452" src="https://github.com/user-attachments/assets/d92f10d2-3ba4-427f-97ff-9a1f1e182b5e" />
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
@@ -47,7 +47,7 @@ For this part of the lab, I observed ICMP traffic using Wireshark on my Windows 
 - Stop the ping activity.
  
 
-For this part of the lab, I initiated a continuous ping from the Windows 10 VM to the Ubuntu VM using Command Prompt and the `ping -t` command. This caused the ping to run nonstop, so I could analyze the traffic in real time in Wireshark. While the ping was running, I disabled inbound ICMP traffic in the Network Security Group linked to the Linux VM. After disabling the rule, I returned to the Windows 10 VM and observed that the ping requests began to fail, and Wireshark showed that reply packets were no longer being received. This confirmed that the NSG was successfully blocking inbound ICMP traffic. I then went back to the NSG settings and re-enabled the inbound ICMP rule. After enabling it again, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again. This demonstrated how Network Security Groups can control and filter network traffic. At the end, I stopped the continuous ping in Command Prompt.
+For this part of the lab, I initiated a continuous ping from the Windows 10 VM to the Ubuntu VM using Command Prompt and the `ping -t` command. This caused the ping to run nonstop so that I could analyze the traffic in real time in Wireshark. While the ping was running, I disabled inbound ICMP traffic in the Network Security Group linked to the Linux VM. After disabling the rule, I returned to the Windows 10 VM and observed that the ping requests began to fail, and Wireshark showed that reply packets were no longer being received. This confirmed that the NSG was successfully blocking inbound ICMP traffic. I then went back to the NSG settings and re-enabled the inbound ICMP rule. After enabling it again, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again. This demonstrated how Network Security Groups can control and filter network traffic. At the end, I stopped the continuous ping in Command Prompt.
 
 <img width="624" height="555" alt="image" src="https://github.com/user-attachments/assets/fc9719cf-d706-4871-8813-325d3d813736" />
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
