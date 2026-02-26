@@ -9,7 +9,7 @@ Throughout this tutorial, we focus on monitoring and analyzing network traffic b
 - Microsoft Azure (Virtual Machines/Compute services)
 - Remote Desktop
 - Various Command-Line Tools
-- Different Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
+- Different Network Protocols (SSH, RDP, DNS, HTTP/S, ICMP)
 - Wireshark (Protocol Analyzer)
 
 <h2>Operating Systems Used </h2>
@@ -95,5 +95,5 @@ I returned to Wireshark and applied the filter `tcp.port == 3389` to view Remote
 
 <h2>Purpose</h2>
 
-The purpose of this project is to develop a deeper understanding of how network traffic flows within cloud environments and how security configurations help control and protect that traffic. Within the Azure-based systems, this project allows us to analyze how devices communicate with each other between virtual networks and how security tools, such as Network Security Groups, regulate access and data transmission. This also helps us build practical knowledge of how various protocols function and how network activity can be monitored and observed. Lastly, this project strengthens troubleshooting skills by allowing one to identify, analyze, and resolve network connectivity and security issues. Overall, the project provides foundational experience that is essential for effectively managing, securing, and maintaining cloud-based network infrastructures in Microsoft Azure.
+The purpose of this project is to develop a deeper understanding of how network traffic flows within cloud environments and how security configurations help control and protect that traffic. Within the Azure-based systems, this project allows us to analyze how devices communicate with each other between virtual networks and how security tools, such as Network Security Groups, regulate access and data transmission. This also helps us build practical knowledge of how various protocols function and how network activity can be monitored and observed. Lastly, this project strengthens troubleshooting skills by enabling one to identify, analyze, and resolve network connectivity and security issues. Overall, the project provides foundational experience that is essential for effectively managing, securing, and maintaining cloud-based network infrastructures in Microsoft Azure.
 
