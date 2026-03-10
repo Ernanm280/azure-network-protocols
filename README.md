@@ -19,16 +19,14 @@ Throughout this tutorial, we focus on monitoring and analyzing network traffic b
 
 <h2>Actions and Observations</h2>
 
-**1. Observing ICMP Traffic**
 - If using a Mac, install Microsoft Remote Desktop
 - Using RDP, connect to the Windows 10 VM.
 - Install [Wireshark](https://www.wireshark.org) within the Windows 10 VM.
 - Open Wireshark and start a packet capture.
-- Filter for ICMP traffic in Wireshark.
-- Retrieve the private IP address of the Linux VM and attempt to ping it from the Windows 10 VM.
-- Observe ping requests and replies within Wireshark.
 
-For this part of the lab, I observed ICMP traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol (RDP) from my Windows computer to connect to the Windows 10 VM in Azure. Once connected, I installed and opened Wireshark, then started a packet capture and applied the ICMP filter to show only ICMP traffic. Next, I obtained the private IP address of the Linux VM and used Command Prompt on the Windows 10 VM to ping it. While the ping was running, I observed the ICMP request and reply traffic in Wireshark. This is important because it confirmed that communication between the two virtual machines was successful. This allowed me to see how ICMP is used to test connectivity between systems within the virtual network.
+**1. Observing ICMP Traffic**
+  
+For this part of the lab, I observed `ICMP` traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol `RDP` from my Windows computer to connect to the Windows 10 VM in Azure. Once connected, I installed and opened Wireshark, then started a packet capture and applied the `ICMP` filter to show only `ICMP` traffic. Next, I obtained the private IP address of the Linux VM and used Command Prompt on the Windows 10 VM to ping it. While the ping was running, I observed the `ICMP` request and reply traffic in Wireshark. This is important because it confirmed that communication between the two virtual machines was successful. This allowed me to see how `ICMP` is used to test connectivity between systems within the virtual network.
 
 <img width="1898" height="788" alt="Screenshot 2026-02-24 185452" src="https://github.com/user-attachments/assets/d92f10d2-3ba4-427f-97ff-9a1f1e182b5e" />
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
@@ -39,15 +37,8 @@ For this part of the lab, I observed ICMP traffic using Wireshark on my Windows 
 
 
 **2. Configuring a Firewall (Network Security Group)**
-- Initiate a perpetual/non-stop ping from the Windows 10 VM to the Linux VM.
-- Open the Network Security Group (NSG) associated with the Linux VM and disable inbound ICMP traffic.
-- Return to the Windows 10 VM and observe the ICMP traffic and command line ping activity in Wireshark.
-- Re-enable inbound ICMP traffic in the NSG.
-- Back in the Windows 10 VM, observe the ICMP traffic and ping activity resuming in Wireshark.
-- Stop the ping activity.
  
-
-For this part of the lab, I initiated a continuous ping from the Windows 10 VM to the Ubuntu VM using Command Prompt and the `ping -t` command. This caused the ping to run nonstop so that I could analyze the traffic in real time in Wireshark. While the ping was running, I disabled inbound ICMP traffic in the Network Security Group linked to the Linux VM. After disabling the rule, I returned to the Windows 10 VM and observed that the ping requests began to fail, and Wireshark showed that reply packets were no longer being received. This confirmed that the NSG was successfully blocking inbound ICMP traffic. I then went back to the NSG settings and re-enabled the inbound ICMP rule. After enabling it again, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again. This demonstrated how Network Security Groups can control and filter network traffic. Once finished, I stopped the continuous ping in Command Prompt.
+For this part of the lab, I initiated a continuous ping from the Windows 10 VM to the Ubuntu VM using Command Prompt and the `ping -t` command. This caused the ping to run nonstop so that I could analyze the traffic in real time in Wireshark. While the ping was running, I disabled inbound `ICMP` traffic in the Network Security Group linked to the Linux VM. After disabling the rule, I returned to the Windows 10 VM and observed that the ping requests began to fail, and Wireshark showed that reply packets were no longer being received. This confirmed that the `NSG` was successfully blocking inbound `ICMP` traffic. I then went back to the `NSG` settings and re-enabled the inbound `ICMP` rule. After enabling it again, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again. This demonstrated how Network Security Groups can control and filter network traffic. Once finished, I stopped the continuous ping in Command Prompt.
 
 <img width="624" height="555" alt="image" src="https://github.com/user-attachments/assets/fc9719cf-d706-4871-8813-325d3d813736" />
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
@@ -58,7 +49,7 @@ For this part of the lab, I initiated a continuous ping from the Windows 10 VM t
 
 **3. Observing SSH Traffic**
 
-I opened Wireshark on the Windows 10 VM and started a packet capture to observe network traffic. After, I applied a filter for SSH traffic so I could focus only on SSH packets. Next, I opened PowerShell and used the SSH command to connect to the Linux VM using its private IP address and the labuser account. Once connected, I entered the required login information and ran a few commands in the SSH session. While doing this, I observed the SSH traffic in Wireshark and saw the packets being transmitted between the Windows 10 VM and the Linux VM. This demonstrates how SSH enables secure remote communication between two systems. After finishing observing the traffic, I typed `exit` and pressed Enter to close the SSH connection.
+I opened Wireshark on the Windows 10 VM and started a packet capture to observe network traffic. After, I applied a filter for `SSH` traffic so I could focus only on `SSH` packets. Next, I opened `PowerShell` and used the `SSH` command to connect to the Linux VM using its private IP address and the `labuser` account. Once connected, I entered the required login information and ran a few commands in the `SSH` session. While doing this, I observed the `SSH` traffic in Wireshark and saw the packets being transmitted between the Windows 10 VM and the Linux VM. This demonstrates how `SSH` enables secure remote communication between two systems. After finishing observing the traffic, I typed `exit` and pressed Enter to close the `SSH` connection.
 
   
 <img width="746" height="484" alt="image" src="https://github.com/user-attachments/assets/41e9dc17-1c21-4f78-861f-1005bffa1545" />
@@ -68,7 +59,7 @@ I opened Wireshark on the Windows 10 VM and started a packet capture to observe 
 
 **4. Observing DHCP Traffic**
 
-I went back to Wireshark and applied a DHCP filter to display only DHCP-related traffic. After setting the filter, I opened Command Prompt on the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the network. While the command was running, I observed DHCP traffic appearing in Wireshark. The capture showed the communication between the virtual machine and the DHCP server as the system requested and received IP configuration information. This demonstrated how DHCP automatically assigns IP addresses and network settings to devices on a network.
+I went back to Wireshark and applied a `DHCP` filter to display only DHCP-related traffic. After setting the filter, I opened Command Prompt on the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the network. While the command was running, I observed `DHCP` traffic appearing in Wireshark. The capture showed the communication between the virtual machine and the `DHCP` server as the system requested and received IP configuration information. This demonstrated how `DHCP` automatically assigns IP addresses and network settings to devices on a network.
 
   
 <img width="960" height="682" alt="Screenshot 2026-02-24 204137" src="https://github.com/user-attachments/assets/5dad524f-8a8f-469f-b5ed-71913330f7e6" />
@@ -77,7 +68,7 @@ I went back to Wireshark and applied a DHCP filter to display only DHCP-related 
 
 **5. Observing DNS Traffic**
 
-I applied a DNS filter to view only DNS-related traffic. After applying the filter, I opened Command Prompt on the Windows 10 VM and used the `nslookup` command to find the IP addresses of google.com and disney.com. When I entered `nslookup google.com` and `nslookup disney.com`, Wireshark captured the DNS request and response packets. The request showed my computer asking the DNS server for the IP address of each domain, and the response showed the DNS server returning the corresponding IP address. This demonstrated how DNS is used to translate domain names into IP addresses so computers can communicate with each other over the network.
+I applied a `DNS` filter to view only DNS-related traffic. After applying the filter, I opened Command Prompt on the Windows 10 VM and used the `nslookup` command to find the IP addresses of `google.com` and `disney.com.` When I entered `nslookup google.com` and `nslookup disney.com`, Wireshark captured the `DNS` request and response packets. The request showed my computer asking the `DNS` server for the IP address of each domain, and the response showed the `DNS` server returning the corresponding IP address. This demonstrated how DNS is used to translate domain names into IP addresses so computers can communicate with each other over the network.
 
 <img width="879" height="533" alt="Screenshot 2026-02-24 205139" src="https://github.com/user-attachments/assets/e3ce49c9-4e38-4c8e-8a22-62dd867e4f02" />
 <img width="473" height="342" alt="Screenshot 2026-02-24 205818" src="https://github.com/user-attachments/assets/f6252881-980c-4e05-8a90-52f74e00f078" />
@@ -88,7 +79,7 @@ I applied a DNS filter to view only DNS-related traffic. After applying the filt
 
 **6. Observing RDP Traffic** 
 
-I returned to Wireshark and applied the filter `tcp.port == 3389` to view Remote Desktop Protocol (RDP) traffic. After applying the filter, I observed continuous network traffic between my computer and the Windows 10 VM. This traffic remained active even when I was not typing or clicking anything. This happens because RDP constantly sends data to maintain the remote session and display a live view of the remote computer screen. The continuous transmission ensures that any changes on the remote system, such as mouse movements or screen updates, are shown in real time. This helped me understand how RDP maintains a stable and responsive remote connection.
+I returned to Wireshark and applied the filter `tcp.port == 3389` to view Remote Desktop Protocol `RDP` traffic. After applying the filter, I observed continuous network traffic between my computer and the Windows 10 VM. This traffic remained active even when I was not typing or clicking anything. This happens because `RDP` constantly sends data to maintain the remote session and display a live view of the remote computer screen. The continuous transmission ensures that any changes on the remote system, such as mouse movements or screen updates, are shown in real time. This helped me understand how `RDP` maintains a stable and responsive remote connection.
 
 <img width="1151" height="725" alt="image" src="https://github.com/user-attachments/assets/aa932325-279d-4d0e-80fa-2eade25e89de" />
 
