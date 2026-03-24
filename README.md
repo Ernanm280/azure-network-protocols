@@ -5,6 +5,20 @@
 <h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
 
 Throughout this tutorial, we focus on monitoring and analyzing network traffic between Azure Virtual Machines using Wireshark. It also includes working with Azure Network Security Groups (NSG) to manage and control network traffic. Various protocols such as `ICMP`, `SSH`, `DHCP`,` DNS`, and `RDP` are observed within Wireshark to understand how communication happens between systems or Virtual Machines.
+
+## 🔗 Related Project: Azure VM Setup
+ 
+
+Before performing network traffic analysis, the virtual machines used in this lab were deployed and configured in a previous project.
+
+You can view the full VM setup here:  
+👉 https://github.com/Ernanm280/azure-setup
+
+This includes:
+- Virtual Network (VNet) configuration
+- Windows 10 and Ubuntu VM deployment
+- Initial network connectivity setup
+
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute services)
@@ -25,21 +39,6 @@ Throughout this tutorial, we focus on monitoring and analyzing network traffic b
 - Install [Wireshark](https://www.wireshark.org) within the Windows 10 VM.
 - Open Wireshark and start a packet capture.
 
-## 🔗 Related Project: Azure VM Setup
- 
-
-Before performing network traffic analysis, the virtual machines used in this lab were deployed and configured in a previous project.
-
-You can view the full VM setup here:  
-👉 https://github.com/Ernanm280/azure-setup
-
-This includes:
-- Virtual Network (VNet) configuration
-- Windows 10 and Ubuntu VM deployment
-- Initial network connectivity setup
-
-
-
 
 **1. Observing ICMP Traffic**
   
@@ -48,7 +47,15 @@ For this part of the lab, I observed `ICMP` traffic using Wireshark on my Window
 <img width="1898" height="788" alt="Screenshot 2026-02-24 185452" src="https://github.com/user-attachments/assets/d92f10d2-3ba4-427f-97ff-9a1f1e182b5e" />
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
 <img width="1886" height="915" alt="image" src="https://github.com/user-attachments/assets/eb959b0f-783c-411d-894a-cd462450668f" />
+
+- Apply the `ICMP` filter within Wireshark
+  
 <img width="1549" height="910" alt="image" src="https://github.com/user-attachments/assets/323c53f5-4739-415c-8b1d-3341100f01c9" />
+
+- Locate the Private IP address from the Linux VM within Microsoft Azure
+- Use Command Prompt on the Windows 10 VM to ping 
+- Observe the `ICMP` request and reply traffic in Wireshark.
+
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 <img width="1902" height="936" alt="image" src="https://github.com/user-attachments/assets/8e2fffb7-5d4c-4480-bd8d-72703a0e6181" />
 
