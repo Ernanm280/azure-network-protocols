@@ -25,6 +25,22 @@ Throughout this tutorial, we focus on monitoring and analyzing network traffic b
 - Install [Wireshark](https://www.wireshark.org) within the Windows 10 VM.
 - Open Wireshark and start a packet capture.
 
+## 🔗 Related Project: Azure VM Setup
+ 
+
+Before performing network traffic analysis, the virtual machines used in this lab were deployed and configured in a previous project.
+
+You can view the full VM setup here:  
+👉 https://github.com/Ernanm280/azure-setup
+
+This includes:
+- Virtual Network (VNet) configuration
+- Windows 10 and Ubuntu VM deployment
+- Initial network connectivity setup
+
+
+
+
 **1. Observing ICMP Traffic**
   
 For this part of the lab, I observed `ICMP` traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol `RDP` from my Windows computer to connect to the Windows 10 VM in Azure. Once connected, I installed and opened Wireshark, then started a packet capture and applied the `ICMP` filter to show only `ICMP` traffic. Next, I obtained the private IP address of the Linux VM and used Command Prompt on the Windows 10 VM to ping it. While the ping was running, I observed the `ICMP` request and reply traffic in Wireshark. This is important because it confirmed that communication between the two virtual machines was successful. This allowed me to see how `ICMP` is used to test connectivity between systems within the virtual network.
