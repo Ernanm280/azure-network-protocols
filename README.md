@@ -49,7 +49,7 @@ For this part of the lab, I observed `ICMP` traffic using Wireshark on my Window
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
 <img width="1886" height="915" alt="image" src="https://github.com/user-attachments/assets/eb959b0f-783c-411d-894a-cd462450668f" />
 
-- Apply the `ICMP` filter in Wireshark
+**Apply the `ICMP` filter in Wireshark:**
   
 <img width="1549" height="910" alt="image" src="https://github.com/user-attachments/assets/323c53f5-4739-415c-8b1d-3341100f01c9" />
 
