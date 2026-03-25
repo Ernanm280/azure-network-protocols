@@ -60,7 +60,7 @@ For this part of the lab, I observed `ICMP` traffic using Wireshark on my Window
 - Locate Private IP address (172.16.0.5)
 
 **Result: You successfully found the VM’s private IP address.**
-- **Observe ping requests and replies within WireShark**
+- **Observe ping requests and replies within WireShark:**
   
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 <img width="1902" height="936" alt="image" src="https://github.com/user-attachments/assets/8e2fffb7-5d4c-4480-bd8d-72703a0e6181" />
@@ -135,7 +135,8 @@ I applied a `DNS` filter to view only DNS-related traffic. After applying the fi
 - Open **Windows PowerShell**
 - Run the command: `nslookup google.com`
 - The DNS server returns **IP addresses for google.com**
-**Observe the DNS traffic being shown in Wireshark**
+
+**Observe the DNS traffic being shown in Wireshark:**
 
 <img width="473" height="342" alt="Screenshot 2026-02-24 205818" src="https://github.com/user-attachments/assets/f6252881-980c-4e05-8a90-52f74e00f078" />
 <img width="1538" height="865" alt="Screenshot 2026-02-24 205837" src="https://github.com/user-attachments/assets/005ce102-9125-4095-b074-77e40418dfdb" />
@@ -143,7 +144,8 @@ I applied a `DNS` filter to view only DNS-related traffic. After applying the fi
 - Open **Windows PowerShell**
 - Run the command: `nslookup disney.com`
 - The DNS server returns **IP addresses for disney.com**
-**Observe the DNS traffic being shown in Wireshark**
+
+**Observe the DNS traffic being shown in Wireshark:**
 
 <img width="470" height="353" alt="Screenshot 2026-02-24 205918" src="https://github.com/user-attachments/assets/80bbe9cc-2918-4ee6-b4fc-846b94ddaed2" />
 <img width="1427" height="984" alt="Screenshot 2026-02-24 205946" src="https://github.com/user-attachments/assets/1673974f-cbb5-407d-b476-4fbb2a0d26b4" />
