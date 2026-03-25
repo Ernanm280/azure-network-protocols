@@ -39,6 +39,7 @@ This includes:
 - Install [Wireshark](https://www.wireshark.org) within the Windows 10 VM.
 - Open Wireshark and start a packet capture.
 
+---
 
 **1. Observing ICMP Traffic**
   
@@ -48,28 +49,49 @@ For this part of the lab, I observed `ICMP` traffic using Wireshark on my Window
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
 <img width="1886" height="915" alt="image" src="https://github.com/user-attachments/assets/eb959b0f-783c-411d-894a-cd462450668f" />
 
-- Apply the `ICMP` filter within Wireshark
+- Apply the `ICMP` filter in Wireshark
   
 <img width="1549" height="910" alt="image" src="https://github.com/user-attachments/assets/323c53f5-4739-415c-8b1d-3341100f01c9" />
 
-- Locate the Private IP address from the Linux VM within Microsoft Azure
-- Use Command Prompt on the Windows 10 VM to ping 
-- Observe the `ICMP` request and reply traffic in Wireshark.
-
+- **Retrieve the private IP address of the Ubuntu VM (linux-vm) and attempt to ping it from within the Windows 10 VM**
+- **Observe ping requests and replies within WireShark**
+  
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 <img width="1902" height="936" alt="image" src="https://github.com/user-attachments/assets/8e2fffb7-5d4c-4480-bd8d-72703a0e6181" />
 
+---
 
 **2. Configuring a Firewall (Network Security Group)**
  
 For this part of the lab, I initiated a continuous ping from the Windows 10 VM to the Ubuntu VM using Command Prompt and the `ping -t` command. This caused the ping to run nonstop so that I could analyze the traffic in real time in Wireshark. While the ping was running, I disabled inbound `ICMP` traffic in the Network Security Group linked to the Linux VM. After disabling the rule, I returned to the Windows 10 VM and observed that the ping requests began to fail, and Wireshark showed that reply packets were no longer being received. This confirmed that the `NSG` was successfully blocking inbound `ICMP` traffic. I then went back to the `NSG` settings and re-enabled the inbound `ICMP` rule. After enabling it again, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again. This demonstrated how Network Security Groups can control and filter network traffic. Once finished, I stopped the continuous ping in Command Prompt.
 
 <img width="624" height="555" alt="image" src="https://github.com/user-attachments/assets/fc9719cf-d706-4871-8813-325d3d813736" />
+
+**Open the Network Security Group your Ubuntu VM is using and disable incoming (inbound) ICMP traffic**
+- Open NSG (Linux-VM-nsg) attached to the Ubuntu VM
+- Click + Add inbound security rule
+- Configure the rules
+- Click Add
+
+**Result:
+All inbound ICMP (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows VM will fail.**
+
+
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
 <img width="877" height="548" alt="Screenshot 2026-02-24 193855" src="https://github.com/user-attachments/assets/76b693af-162f-46f1-aa03-07ab91a953f6" />
+
+**Re-enabling ICMP Traffic (Allow Ping Again)**
+- Go to your Network Security Group 
+- Locate the DenyInbound (ICMP) rule
+- Click the delete (trash icon) on the rule
+- Confirm by selecting Yes in the prompt
+
+**Result: The ICMP block rule is removed, so ping traffic is allowed again from your Windows VM to your Ubuntu VM.**
+
 <img width="1490" height="576" alt="image" src="https://github.com/user-attachments/assets/0cc8f104-b0eb-459e-9a4b-233500259c2f" />
 <img width="777" height="535" alt="image" src="https://github.com/user-attachments/assets/a5af13de-76ab-416c-b06b-df151b5c6501" />
 
+---
 
 **3. Observing SSH Traffic**
 
@@ -78,8 +100,14 @@ I opened Wireshark on the Windows 10 VM and started a packet capture to observe 
   
 <img width="746" height="484" alt="image" src="https://github.com/user-attachments/assets/41e9dc17-1c21-4f78-861f-1005bffa1545" />
 <img width="1221" height="566" alt="Screenshot 2026-02-24 202054" src="https://github.com/user-attachments/assets/09d8b753-4c66-44f3-bea7-886af2b5f5cd" />
+
+**From your Windows 10 VM, “SSH into” your Ubuntu Virtual Machine (via its private IP address)**
+- Open PowerShell, and type: ssh labuser@<private IP address>
+- Type commands (username, pwd, etc) into the Linux SSH connection and observe SSH traffic spam in Wireshark
+
 <img width="1406" height="826" alt="Screenshot 2026-02-24 201620" src="https://github.com/user-attachments/assets/198ba6a0-08b9-4067-b40b-2fecfcac71fe" />
 
+---
 
 **4. Observing DHCP Traffic**
 
@@ -89,6 +117,7 @@ I went back to Wireshark and applied a `DHCP` filter to display only DHCP-relate
 <img width="960" height="682" alt="Screenshot 2026-02-24 204137" src="https://github.com/user-attachments/assets/5dad524f-8a8f-469f-b5ed-71913330f7e6" />
 <img width="1242" height="577" alt="Screenshot 2026-02-24 204753" src="https://github.com/user-attachments/assets/41814628-72d3-45a9-a9b2-7b0b100df463" />
 
+---
 
 **5. Observing DNS Traffic**
 
@@ -100,6 +129,7 @@ I applied a `DNS` filter to view only DNS-related traffic. After applying the fi
 <img width="470" height="353" alt="Screenshot 2026-02-24 205918" src="https://github.com/user-attachments/assets/80bbe9cc-2918-4ee6-b4fc-846b94ddaed2" />
 <img width="1427" height="984" alt="Screenshot 2026-02-24 205946" src="https://github.com/user-attachments/assets/1673974f-cbb5-407d-b476-4fbb2a0d26b4" />
 
+---
 
 **6. Observing RDP Traffic** 
 
