@@ -67,7 +67,7 @@ This includes:
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 
 - Open **Windows PowerShell** and `ping` Ubuntu VM's private IP address (**172.16.0.5**) from within the Windows 10 VM
-- While the ping is running on the Windows 10 VM, observe the `ICMP` request and reply traffic in Wireshark.
+- While the ping is running on the Windows 10 VM, observe the `ICMP` request and reply traffic in Wireshark
 > [!NOTE]
 > Successful ICMP replies confirmed that communication between the Windows and Ubuntu virtual machines was working properly.
   
@@ -103,13 +103,13 @@ This includes:
 
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
 
-- Result: All inbound `ICMP` (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows VM will fail
+- Result: All inbound `ICMP` (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows 10 VM will fail
 
 <img width="877" height="548" alt="Screenshot 2026-02-24 193855" src="https://github.com/user-attachments/assets/76b693af-162f-46f1-aa03-07ab91a953f6" />
 
 - **Re-enabling `ICMP` traffic (Allow Ping again)**
 
-1. Within Azure, go to Linux VM's Network Security Group*
+1. Within Azure, go to Linux VM's Network Security Group
 2. Locate the DenyInbound (ICMP) rule
 3. Click the **delete** (trash icon) on the rule
 4. Confirm by selecting **Yes** in the prompt
@@ -117,7 +117,7 @@ This includes:
 
 <img width="1490" height="576" alt="image" src="https://github.com/user-attachments/assets/0cc8f104-b0eb-459e-9a4b-233500259c2f" />
 
-- Result: After re-enabling `ICMP`, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again.
+- Result: After re-enabling `ICMP`, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again
 
 <img width="777" height="535" alt="image" src="https://github.com/user-attachments/assets/a5af13de-76ab-416c-b06b-df151b5c6501" />
 
@@ -126,34 +126,34 @@ This includes:
 **3. Observing SSH Traffic**
 
 - I opened Wireshark on the Windows 10 virtual machine and started a packet capture to observe network traffic
-- I then applied the `SSH` filter to display only SSH-related packets.
+- I then applied the `SSH` filter to display only SSH-related packets
   
 <img width="746" height="484" alt="image" src="https://github.com/user-attachments/assets/41e9dc17-1c21-4f78-861f-1005bffa1545" />
 
 - From the Windows 10 VM, I initiated an SSH connection to the Ubuntu VM using **PowerShell** with the following command: (**`ssh labuser@172.16.0.5`**)
 
-- After entering the correct credentials, I successfully connected to the Ubuntu virtual machine.
+- After entering the correct credentials, I successfully connected to the Ubuntu virtual machine
   
 <img width="1221" height="566" alt="Screenshot 2026-02-24 202054" src="https://github.com/user-attachments/assets/09d8b753-4c66-44f3-bea7-886af2b5f5cd" />
 
-- Once connected, I executed basic commands such as `whoami` and `pwd` within the SSH session. 
-- During this time, I observed continuous SSH traffic in Wireshark, confirming that communication between the two systems was active and encrypted.
+- Once connected, I executed basic commands such as `whoami` and `pwd` within the SSH session
+- During this time, I observed continuous SSH traffic in Wireshark, confirming that communication between the two systems was active and encrypted
 
 <img width="1406" height="826" alt="Screenshot 2026-02-24 201620" src="https://github.com/user-attachments/assets/198ba6a0-08b9-4067-b40b-2fecfcac71fe" />
 
 **This demonstrates how `SSH` enables secure remote communication between two systems.** 
-- After finishing observing the traffic, I typed `exit` and pressed Enter to close the `SSH` connection.
+- After finishing observing the traffic, I typed `exit` and pressed Enter to close the `SSH` connection
 
 ---
 
 **4. Observing DHCP Traffic**
 
-- On the Windows 10 VM, I returned to Wireshark and applied a `DHCP` filter to display only DHCP-related traffic. 
+- On the Windows 10 VM, I returned to Wireshark and applied a `DHCP` filter to display only DHCP-related traffic
 
 <img width="960" height="682" alt="Screenshot 2026-02-24 204137" src="https://github.com/user-attachments/assets/5dad524f-8a8f-469f-b5ed-71913330f7e6" />
 
-- After setting the filter, I opened **Windows PowerShell** within the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the DHCP server.
-- While the command was running, `DHCP` traffic appeared in Wireshark. (The capture showed the exchange between the client and the DHCP server during the IP assignment process)
+- After setting the filter, I opened **Windows PowerShell** within the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the DHCP server
+- While the command was running, `DHCP` traffic appeared in Wireshark (The capture showed the exchange between the client and the DHCP server during the IP assignment process)
 
 <img width="1242" height="577" alt="Screenshot 2026-02-24 204753" src="https://github.com/user-attachments/assets/41814628-72d3-45a9-a9b2-7b0b100df463" />
 
@@ -194,8 +194,8 @@ This includes:
 
 **6. Observing RDP Traffic** 
 
-- I returned to Wireshark and applied the filter `tcp.port == 3389` to view Remote Desktop Protocol `RDP` traffic.
-- After applying the filter, I observed continuous network traffic between my computer and the Windows 10 VM. (This traffic remained active even when I was not typing or clicking anything.)
+- I returned to Wireshark and applied the filter `tcp.port == 3389` to view Remote Desktop Protocol `RDP` traffic
+- After applying the filter, I observed continuous network traffic between my computer and the Windows 10 VM (This traffic remained active even when I was not typing or clicking anything.)
 
 > [!NOTE]
 > This happens because `RDP` constantly sends data to maintain the remote session and display a live view of the remote computer screen. The continuous transmission ensures that any changes on the remote system, such as mouse movements or screen updates, are shown in real time. 
