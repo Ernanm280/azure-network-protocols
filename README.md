@@ -62,7 +62,7 @@ This includes:
 3. *Look under Networking*
 4. *Locate Private IP address (172.16.0.5)*
 
-- *Result: You successfully found the VM’s private IP address*
+- *Result: You successfully found the Ubuntu VM's private IP address*
   
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 
@@ -78,9 +78,11 @@ This includes:
 
 **2. Configuring a Firewall (Network Security Group)**
  
-- *Initiate a continuous ICMP ping from the Windows 10 VM to the Ubuntu VM using the `ping -t` command in PowerShell*
+- *Initiate a continuous `ping` on the Windows 10 VM to the Ubuntu VM (Private IP address) using the `ping -t` command in PowerShell*
+
 > [!NOTE]
-> This caused the ping to run continuously, allowing me to analyze the traffic in real time in Wireshark. This demonstrated how Network Security Groups can control and filter network traffic.
+> This caused the `ping` to run continuously, allowing me to analyze the traffic in real time in Wireshark.
+
 <img width="624" height="555" alt="image" src="https://github.com/user-attachments/assets/fc9719cf-d706-4871-8813-325d3d813736" />
 
 - While the ping was running, I disabled inbound `ICMP` traffic in the Network Security Group linked to the Linux VM
@@ -97,12 +99,12 @@ This includes:
 
 <img width="877" height="548" alt="Screenshot 2026-02-24 193855" src="https://github.com/user-attachments/assets/76b693af-162f-46f1-aa03-07ab91a953f6" />
 
-**Re-enabling `ICMP` traffic (Allow `Ping`Again)**
+**Re-enabling `ICMP` traffic (Allow `Ping` again)**
 
-1. Go to your Network Security Group 
-2. Locate the DenyInbound (ICMP) rule
-3. Click the delete (trash icon) on the rule
-4. Confirm by selecting Yes in the prompt
+1. *Go to your Network Security Group* 
+2. *Locate the DenyInbound (ICMP) rule*
+3. *Click the delete (trash icon) on the rule*
+4. *Confirm by selecting Yes in the prompt*
 
 
 <img width="1490" height="576" alt="image" src="https://github.com/user-attachments/assets/0cc8f104-b0eb-459e-9a4b-233500259c2f" />
