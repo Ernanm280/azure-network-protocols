@@ -58,15 +58,15 @@ This includes:
 
 - **Retrieve the private IP address of the Ubuntu VM (linux-vm) and attempt to ping it from within the Windows 10 VM**
 1. *Opening the Ubuntu VM in Azure*
-2. *Navigate to the Overview/Properties tab*
-3. *Check under Networking*
-4. *Locate Private IP address (172.16.0.5)*
+2. *Navigate to the **Overview/Properties tab**
+3. *Check under **Networking**
+4. *Locate Private IP address (**172.16.0.5**)*
 
 - *Result: You successfully found the Ubuntu VM's private IP address*
   
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 
-- *Open PowerShell and `ping` Ubuntu VM's private IP address (172.16.0.5) from within the Windows 10 VM*
+- *Open PowerShell and `ping` Ubuntu VM's private IP address (**172.16.0.5**) from within the Windows 10 VM*
 - *While the ping is running on the Windows 10 VM, observe the `ICMP` request and reply traffic in Wireshark.*
 > [!NOTE]
 > Successful ICMP replies confirmed that communication between the Windows and Ubuntu virtual machines was working properly.
@@ -86,11 +86,19 @@ This includes:
 
 - While the ping was running, I configured the Network Security Group (NSG) associated with the Ubuntu VM to block inbound ICMP traffic:
 
-1. *Navigated to the Ubuntu VM in Azure*
-2. *Opened **Network Settings***
-3. *Selected the associated NSG (Linux-VM-nsg)*
+1. *Navigate to the Ubuntu VM in Azure*
+2. *Open **Network Settings***
+3. *Select the associated NSG (Linux-VM-nsg)*
 4. *Click **+ Add inbound security rule***
 5. *Configure the rule to deny ICMP traffic*
+- Source: Any
+- Destination: Any
+- Service: Custom
+- Destination Port:*
+- Protocol: ICMPv4
+- Action: Deny
+- Priority: 290
+- Name: DenyInbound.
 6. *Click **Add***
 
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
@@ -104,7 +112,7 @@ This includes:
 1. *Within Azure, go to Linux VM's Network Security Group* 
 2. *Locate the DenyInbound (ICMP) rule*
 3. *Click the delete (trash icon) on the rule*
-4. *Confirm by selecting Yes in the prompt*
+4. *Confirm by selecting **Yes** in the prompt*
 
 
 <img width="1490" height="576" alt="image" src="https://github.com/user-attachments/assets/0cc8f104-b0eb-459e-9a4b-233500259c2f" />
