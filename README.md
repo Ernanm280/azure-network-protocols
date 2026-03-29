@@ -43,31 +43,31 @@ This includes:
 
 **1. Observing ICMP Traffic**
   
-- *For this part of the lab, I observed `ICMP` traffic using Wireshark on the Windows 10 virtual machine. I used Remote Desktop Protocol (`RDP`) from my local computer to connect to the Windows 10 VM within Azure*
+- For this part of the lab, I observed `ICMP` traffic using Wireshark on the Windows 10 virtual machine. I used Remote Desktop Protocol (`RDP`) from my local computer to connect to the Windows 10 VM within Azure
 
 <img width="1898" height="788" alt="Screenshot 2026-02-24 185452" src="https://github.com/user-attachments/assets/d92f10d2-3ba4-427f-97ff-9a1f1e182b5e" />
 
-- *Once connected to the Windows 10 VM, I installed and launched Wireshark, started a packet capture, and applied the `ICMP` filter to display only `ICMP` traffic*  
+- Once connected to the Windows 10 VM, I installed and launched Wireshark, started a packet capture, and applied the `ICMP` filter to display only `ICMP` traffic  
 
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
 <img width="1886" height="915" alt="image" src="https://github.com/user-attachments/assets/eb959b0f-783c-411d-894a-cd462450668f" />
 
-- *Apply the `ICMP` filter in Wireshark*
+- Apply the `ICMP` filter in Wireshark
   
 <img width="1549" height="910" alt="image" src="https://github.com/user-attachments/assets/323c53f5-4739-415c-8b1d-3341100f01c9" />
 
 - **Retrieve the private IP address of the Ubuntu VM (linux-vm) and attempt to ping it from within the Windows 10 VM**
-1. *Opening the Ubuntu VM in Azure*
-2. *Navigate to the **Overview/Properties tab**
-3. *Check under **Networking**
-4. *Locate Private IP address (**172.16.0.5**)*
+1. Opening the Ubuntu VM in Azure
+2. Navigate to the **Overview/Properties tab**
+3. Check under **Networking**
+4. Locate Private IP address (**172.16.0.5**)
 
-- *Result: You successfully found the Ubuntu VM's private IP address*
+- Result: You successfully found the Ubuntu VM's private IP address
   
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 
-- *Open PowerShell and `ping` Ubuntu VM's private IP address (**172.16.0.5**) from within the Windows 10 VM*
-- *While the ping is running on the Windows 10 VM, observe the `ICMP` request and reply traffic in Wireshark.*
+- Open **Windows PowerShell** and `ping` Ubuntu VM's private IP address (**172.16.0.5**) from within the Windows 10 VM
+- While the ping is running on the Windows 10 VM, observe the `ICMP` request and reply traffic in Wireshark.
 > [!NOTE]
 > Successful ICMP replies confirmed that communication between the Windows and Ubuntu virtual machines was working properly.
   
@@ -86,11 +86,11 @@ This includes:
 
 - While the ping was running, I configured the Network Security Group (NSG) associated with the Ubuntu VM to block inbound ICMP traffic:
 
-1. *Navigate to the Ubuntu VM in Azure*
-2. *Open **Network Settings***
-3. *Select the associated NSG (Linux-VM-nsg)*
-4. *Click **+ Add inbound security rule***
-5. *Configure the rule to deny ICMP traffic*
+1. Navigate to the Ubuntu VM in Azure
+2. Open **Network Settings**
+3. Select the associated NSG **(Linux-VM-nsg)**
+4. Click **+ Add inbound security rule**
+5. Configure the rule to deny ICMP traffic:
 - Source: Any
 - Destination: Any
 - Service: Custom
@@ -99,25 +99,25 @@ This includes:
 - Action: Deny
 - Priority: 290
 - Name: DenyInbound.
-6. *Click **Add***
+6. Click **Add**
 
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
 
-- *Result: All inbound `ICMP` (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows VM will fail*
+- Result: All inbound `ICMP` (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows VM will fail
 
 <img width="877" height="548" alt="Screenshot 2026-02-24 193855" src="https://github.com/user-attachments/assets/76b693af-162f-46f1-aa03-07ab91a953f6" />
 
 - **Re-enabling `ICMP` traffic (Allow Ping again)**
 
-1. *Within Azure, go to Linux VM's Network Security Group* 
-2. *Locate the DenyInbound (ICMP) rule*
-3. *Click the delete (trash icon) on the rule*
-4. *Confirm by selecting **Yes** in the prompt*
+1. Within Azure, go to Linux VM's Network Security Group*
+2. Locate the DenyInbound (ICMP) rule
+3. Click the **delete** (trash icon) on the rule
+4. Confirm by selecting **Yes** in the prompt
 
 
 <img width="1490" height="576" alt="image" src="https://github.com/user-attachments/assets/0cc8f104-b0eb-459e-9a4b-233500259c2f" />
 
-- *Result: After re-enabling `ICMP`, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again.*
+- Result: After re-enabling `ICMP`, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again.
 
 <img width="777" height="535" alt="image" src="https://github.com/user-attachments/assets/a5af13de-76ab-416c-b06b-df151b5c6501" />
 
