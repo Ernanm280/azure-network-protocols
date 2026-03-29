@@ -182,7 +182,7 @@ This includes:
 - Run the command: `nslookup disney.com`
 - The DNS server returns IP addresses for **disney.com**
 
--Observe the DNS traffic being shown in Wireshark:
+- Observe the DNS traffic being shown in Wireshark:
 
 <img width="470" height="353" alt="Screenshot 2026-02-24 205918" src="https://github.com/user-attachments/assets/80bbe9cc-2918-4ee6-b4fc-846b94ddaed2" />
 <img width="1427" height="984" alt="Screenshot 2026-02-24 205946" src="https://github.com/user-attachments/assets/1673974f-cbb5-407d-b476-4fbb2a0d26b4" />
@@ -194,7 +194,11 @@ This includes:
 
 **6. Observing RDP Traffic** 
 
-I returned to Wireshark and applied the filter `tcp.port == 3389` to view Remote Desktop Protocol `RDP` traffic. After applying the filter, I observed continuous network traffic between my computer and the Windows 10 VM. This traffic remained active even when I was not typing or clicking anything. This happens because `RDP` constantly sends data to maintain the remote session and display a live view of the remote computer screen. The continuous transmission ensures that any changes on the remote system, such as mouse movements or screen updates, are shown in real time. This helped me understand how `RDP` maintains a stable and responsive remote connection.
+- I returned to Wireshark and applied the filter `tcp.port == 3389` to view Remote Desktop Protocol `RDP` traffic.
+- After applying the filter, I observed continuous network traffic between my computer and the Windows 10 VM. (This traffic remained active even when I was not typing or clicking anything.)
+
+> [!NOTE]
+> This happens because `RDP` constantly sends data to maintain the remote session and display a live view of the remote computer screen. The continuous transmission ensures that any changes on the remote system, such as mouse movements or screen updates, are shown in real time. 
 
 <img width="1151" height="725" alt="image" src="https://github.com/user-attachments/assets/aa932325-279d-4d0e-80fa-2eade25e89de" />
 
