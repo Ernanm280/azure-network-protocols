@@ -125,27 +125,40 @@ This includes:
 
 **3. Observing SSH Traffic**
 
-I opened Wireshark on the Windows 10 VM and started a packet capture to observe network traffic. After, I applied a filter for `SSH` traffic so I could focus only on `SSH` packets. Next, I opened `PowerShell` and used the `SSH` command to connect to the Linux VM using its private IP address and the `labuser` account. Once connected, I entered the required login information and ran a few commands in the `SSH` session. While doing this, I observed the `SSH` traffic in Wireshark and saw the packets being transmitted between the Windows 10 VM and the Linux VM. This demonstrates how `SSH` enables secure remote communication between two systems. After finishing observing the traffic, I typed `exit` and pressed Enter to close the `SSH` connection.
-
+- I opened Wireshark on the Windows 10 virtual machine and started a packet capture to observe network traffic
+- I then applied the `SSH` filter to display only SSH-related packets.
   
 <img width="746" height="484" alt="image" src="https://github.com/user-attachments/assets/41e9dc17-1c21-4f78-861f-1005bffa1545" />
+
+- From the Windows 10 VM, I initiated an SSH connection to the Ubuntu VM using **PowerShell** with the following command: (**`ssh labuser@172.16.0.5`**)
+
+- After entering the correct credentials, I successfully connected to the Ubuntu virtual machine.
+  
 <img width="1221" height="566" alt="Screenshot 2026-02-24 202054" src="https://github.com/user-attachments/assets/09d8b753-4c66-44f3-bea7-886af2b5f5cd" />
 
-**From your Windows 10 VM, “SSH into” your Ubuntu Virtual Machine**
-- Open PowerShell, and type: ssh labuser@(private IP address)
-- Type commands (username, pwd, etc) into the Linux SSH connection and observe SSH traffic spam in Wireshark
+- Once connected, I executed basic commands such as `whoami` and `pwd` within the SSH session. 
+- During this time, I observed continuous SSH traffic in Wireshark, confirming that communication between the two systems was active and encrypted.
 
 <img width="1406" height="826" alt="Screenshot 2026-02-24 201620" src="https://github.com/user-attachments/assets/198ba6a0-08b9-4067-b40b-2fecfcac71fe" />
+
+**This demonstrates how `SSH` enables secure remote communication between two systems.** 
+- After finishing observing the traffic, I typed `exit` and pressed Enter to close the `SSH` connection.
 
 ---
 
 **4. Observing DHCP Traffic**
 
-I went back to Wireshark and applied a `DHCP` filter to display only DHCP-related traffic. After setting the filter, I opened Command Prompt on the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the network. While the command was running, I observed `DHCP` traffic appearing in Wireshark. The capture showed the communication between the virtual machine and the `DHCP` server as the system requested and received IP configuration information. This demonstrated how `DHCP` automatically assigns IP addresses and network settings to devices on a network.
+- On the Windows 10 VM, I went back to Wireshark and applied a `DHCP` filter to display only DHCP-related traffic. 
 
-  
 <img width="960" height="682" alt="Screenshot 2026-02-24 204137" src="https://github.com/user-attachments/assets/5dad524f-8a8f-469f-b5ed-71913330f7e6" />
+
+- After setting the filter, I opened `Command Prompt` within the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the network.
+- While the command was running, I observed `DHCP` traffic appearing in Wireshark.
+- The capture showed the communication between the virtual machine and the `DHCP` server as the system requested and received IP configuration information.
+
 <img width="1242" height="577" alt="Screenshot 2026-02-24 204753" src="https://github.com/user-attachments/assets/41814628-72d3-45a9-a9b2-7b0b100df463" />
+
+**This demonstrated how `DHCP` automatically assigns IP addresses and network settings to devices on a network.**
 
 ---
 
