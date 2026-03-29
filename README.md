@@ -66,10 +66,9 @@ This includes:
   
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 
-- *Observe ping requests and replies within Wireshark:*
-* Open PowerShell and ping the Ubuntu VMs (linux-vm) private IP address (172.16.0.5)*
-* While the ping was running on the Windows 10 VM, I observed the `ICMP` request and reply traffic in Wireshark. This is important because it confirmed that communication between the two virtual machines was successful. This allowed me to see how `ICMP` is used to test connectivity between systems within the virtual network.*
-
+* Open PowerShell and `ping` Ubuntu VMs private IP address (172.16.0.5) from within the Windows 10 VM*
+* While the ping was running on the Windows 10 VM, I observed the `ICMP` request and reply traffic in Wireshark. This is important because it confirmed that communication between the two virtual machines was successful.
+  
 <img width="1902" height="936" alt="image" src="https://github.com/user-attachments/assets/8e2fffb7-5d4c-4480-bd8d-72703a0e6181" />
 
 ---
