@@ -152,39 +152,43 @@ This includes:
 
 <img width="960" height="682" alt="Screenshot 2026-02-24 204137" src="https://github.com/user-attachments/assets/5dad524f-8a8f-469f-b5ed-71913330f7e6" />
 
-- After setting the filter, I opened `Command Prompt` within the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the DHCP server.
+- After setting the filter, I opened **Windows PowerShell** within the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the DHCP server.
 - While the command was running, `DHCP` traffic appeared in Wireshark. (The capture showed the exchange between the client and the DHCP server during the IP assignment process)
 
 <img width="1242" height="577" alt="Screenshot 2026-02-24 204753" src="https://github.com/user-attachments/assets/41814628-72d3-45a9-a9b2-7b0b100df463" />
 
-**This demonstrates how DHCP dynamically assigns IP addresses and network configuration settings, enabling devices to join a network without manual configuration.**
+> [!NOTE]
+> This demonstrates how DHCP dynamically assigns IP addresses and network configuration settings, enabling devices to join a network without manual configuration.
 
 ---
 
 **5. Observing DNS Traffic**
 
-I applied a `DNS` filter to view only DNS-related traffic. After applying the filter, I opened Command Prompt on the Windows 10 VM and used the `nslookup` command to find the IP addresses of `google.com` and `disney.com.` When I entered `nslookup google.com` and `nslookup disney.com`, Wireshark captured the `DNS` request and response packets. The request showed my computer asking the `DNS` server for the IP address of each domain, and the response showed the `DNS` server returning the corresponding IP address. This demonstrated how DNS is used to translate domain names into IP addresses so computers can communicate with each other over the network.
+- In the Windows 10 VM, I applied a `DNS` filter to view only DNS-related traffic
 
 <img width="879" height="533" alt="Screenshot 2026-02-24 205139" src="https://github.com/user-attachments/assets/e3ce49c9-4e38-4c8e-8a22-62dd867e4f02" />
 
-**From your Windows 10 VM within a command line, use nslookup to find the IP address for google.com**
+**After applying the filter:**
 - Open **Windows PowerShell**
 - Run the command: `nslookup google.com`
-- The DNS server returns **IP addresses for google.com**
+- The DNS server returns IP addresses for **google.com**
 
-**Observe the DNS traffic being shown in Wireshark:**
+- Observe the DNS traffic being shown in Wireshark:
 
 <img width="473" height="342" alt="Screenshot 2026-02-24 205818" src="https://github.com/user-attachments/assets/f6252881-980c-4e05-8a90-52f74e00f078" />
 <img width="1538" height="865" alt="Screenshot 2026-02-24 205837" src="https://github.com/user-attachments/assets/005ce102-9125-4095-b074-77e40418dfdb" />
 
 - Open **Windows PowerShell**
 - Run the command: `nslookup disney.com`
-- The DNS server returns **IP addresses for disney.com**
+- The DNS server returns IP addresses for **disney.com**
 
-**Observe the DNS traffic being shown in Wireshark:**
+-Observe the DNS traffic being shown in Wireshark:
 
 <img width="470" height="353" alt="Screenshot 2026-02-24 205918" src="https://github.com/user-attachments/assets/80bbe9cc-2918-4ee6-b4fc-846b94ddaed2" />
 <img width="1427" height="984" alt="Screenshot 2026-02-24 205946" src="https://github.com/user-attachments/assets/1673974f-cbb5-407d-b476-4fbb2a0d26b4" />
+
+> [!NOTE]
+> This demonstrates how DNS is used to translate domain names into IP addresses so computers can communicate with each other over the network.
 
 ---
 
