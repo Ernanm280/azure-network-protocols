@@ -57,7 +57,7 @@ This includes:
 <img width="1549" height="910" alt="image" src="https://github.com/user-attachments/assets/323c53f5-4739-415c-8b1d-3341100f01c9" />
 
 - *Retrieve the private IP address of the Ubuntu VM (linux-vm) and attempt to ping it from within the Windows 10 VM*
-1. *Open your Linux VM in Azure*
+1. *Open your Ubuntu VM in Azure*
 2. *Go to the Overview / Properties tab*
 3. *Look under Networking*
 4. *Locate Private IP address (172.16.0.5)*
