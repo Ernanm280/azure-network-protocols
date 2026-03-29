@@ -4,7 +4,7 @@
 
 <h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
 
-Throughout this tutorial, we focus on monitoring and analyzing network traffic between Azure Virtual Machines using Wireshark. It also includes working with Azure Network Security Groups (NSG) to manage and control network traffic. Various protocols such as `ICMP`, `SSH`, `DHCP`,` DNS`, and `RDP` are observed within Wireshark to understand how communication happens between systems or Virtual Machines.
+Throughout this tutorial, we focus on monitoring and analyzing network traffic between Azure Virtual Machines using Wireshark. It also includes working with Azure Network Security Groups (NSG) to manage and control network traffic. Various protocols such as `ICMP`, `SSH`, `DHCP`, `DNS`, and `RDP` are observed in Wireshark to understand how communication happens between systems or Virtual Machines.
 
 ## 🔗 Related Project: Azure VM Setup
  
@@ -43,7 +43,7 @@ This includes:
 
 **1. Observing ICMP Traffic**
   
-- *For this part of the lab, I observed `ICMP` traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol `RDP` from my Windows computer to connect to the Windows 10 VM in Azure*
+- *For this part of the lab, I observed `ICMP` traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol (`RDP`) from my Windows computer to connect to the Windows 10 VM in Azure*
 
 <img width="1898" height="788" alt="Screenshot 2026-02-24 185452" src="https://github.com/user-attachments/assets/d92f10d2-3ba4-427f-97ff-9a1f1e182b5e" />
 
@@ -52,11 +52,11 @@ This includes:
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
 <img width="1886" height="915" alt="image" src="https://github.com/user-attachments/assets/eb959b0f-783c-411d-894a-cd462450668f" />
 
-- *Apply the `ICMP` filter in Wireshark:*
+- *Apply the `ICMP` filter in Wireshark*
   
 <img width="1549" height="910" alt="image" src="https://github.com/user-attachments/assets/323c53f5-4739-415c-8b1d-3341100f01c9" />
 
-- *Retrieve the private IP address of the Ubuntu VM (linux-vm) and attempt to ping it from within the Windows 10 VM*
+- **Retrieve the private IP address of the Ubuntu VM (linux-vm) and attempt to ping it from within the Windows 10 VM**
 1. *Open your Ubuntu VM in Azure*
 2. *Go to the Overview / Properties tab*
 3. *Look under Networking*
@@ -66,7 +66,7 @@ This includes:
   
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 
-- *Open PowerShell and `ping` Ubuntu VMs private IP address (172.16.0.5) from within the Windows 10 VM*
+- *Open PowerShell and `ping` Ubuntu VM's private IP address (172.16.0.5) from within the Windows 10 VM*
 - *While the ping is running on the Windows 10 VM, observe the `ICMP` request and reply traffic in Wireshark.*
 > [!NOTE]
 > This is important because it confirmed that communication between the two virtual machines was successful.
@@ -85,13 +85,13 @@ This includes:
 
 <img width="624" height="555" alt="image" src="https://github.com/user-attachments/assets/fc9719cf-d706-4871-8813-325d3d813736" />
 
-- While the ping was running, I disabled inbound `ICMP` traffic in the Network Security Group linked to the Linux VM
+- While the ping is running, disable inbound `ICMP` traffic in the Network Security Group linked to the Linux VM
 
-1. *Open NSG (Linux-VM-nsg) attached to the Ubuntu VM*
-2. *Click + Add inbound security rule*
-3. *Configure the rules*
-4. *Click Add*
-
+1. *Within Azure, go to Linux VM → Network settings*
+2. *Click the Network Security Group (Linux-VM-nsg)*
+3. *Click + Add inbound security rule*
+4. *Configure the rules*
+5. *Click Add*
 
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
 
@@ -99,9 +99,9 @@ This includes:
 
 <img width="877" height="548" alt="Screenshot 2026-02-24 193855" src="https://github.com/user-attachments/assets/76b693af-162f-46f1-aa03-07ab91a953f6" />
 
-**Re-enabling `ICMP` traffic (Allow `Ping` again)**
+- **Re-enabling `ICMP` traffic (Allow `Ping` again)**
 
-1. *Go to your Network Security Group* 
+1. *Within Azure, go to Linux VM's Network Security Group* 
 2. *Locate the DenyInbound (ICMP) rule*
 3. *Click the delete (trash icon) on the rule*
 4. *Confirm by selecting Yes in the prompt*
