@@ -47,7 +47,7 @@ This includes:
 
 <img width="1898" height="788" alt="Screenshot 2026-02-24 185452" src="https://github.com/user-attachments/assets/d92f10d2-3ba4-427f-97ff-9a1f1e182b5e" />
 
-- *Once connected, I installed and opened Wireshark, then started a packet capture and applied the `ICMP` filter to show only `ICMP` traffic*  
+- *Once connected to the Windows 10 VM, I installed and opened Wireshark, then started a packet capture and applied the `ICMP` filter to show only `ICMP` traffic*  
 
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
 <img width="1886" height="915" alt="image" src="https://github.com/user-attachments/assets/eb959b0f-783c-411d-894a-cd462450668f" />
