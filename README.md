@@ -43,11 +43,11 @@ This includes:
 
 **1. Observing ICMP Traffic**
   
-- *For this part of the lab, I observed `ICMP` traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol `RDP` from my Windows computer to connect to the Windows 10 VM in Azure.*
+- *For this part of the lab, I observed `ICMP` traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol `RDP` from my Windows computer to connect to the Windows 10 VM in Azure*
 
 <img width="1898" height="788" alt="Screenshot 2026-02-24 185452" src="https://github.com/user-attachments/assets/d92f10d2-3ba4-427f-97ff-9a1f1e182b5e" />
 
-- *Once connected, I installed and opened Wireshark, then started a packet capture and applied the `ICMP` filter to show only `ICMP` traffic.*  
+- *Once connected, I installed and opened Wireshark, then started a packet capture and applied the `ICMP` filter to show only `ICMP` traffic*  
 
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
 <img width="1886" height="915" alt="image" src="https://github.com/user-attachments/assets/eb959b0f-783c-411d-894a-cd462450668f" />
@@ -67,18 +67,20 @@ This includes:
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 
 - *Open PowerShell and `ping` Ubuntu VMs private IP address (172.16.0.5) from within the Windows 10 VM*
-- *While the ping was running on the Windows 10 VM, I observed the `ICMP` request and reply traffic in Wireshark. This is important because it confirmed that communication between the two virtual machines was successful.*
+- *While the ping is running on the Windows 10 VM, observe the `ICMP` request and reply traffic in Wireshark.*
+> [!NOTE]
+> This is important because it confirmed that communication between the two virtual machines was successful.
   
 <img width="1902" height="936" alt="image" src="https://github.com/user-attachments/assets/8e2fffb7-5d4c-4480-bd8d-72703a0e6181" />
+
 
 ---
 
 **2. Configuring a Firewall (Network Security Group)**
  
-- *Initiated a continuous ICMP ping from the Windows 10 VM to the Ubuntu VM using the `ping -t` command in PowerShell*
+- *Initiate a continuous ICMP ping from the Windows 10 VM to the Ubuntu VM using the `ping -t` command in PowerShell*
 > [!NOTE]
-> This caused the ping to run continuously, allowing me to analyze the traffic in real time in Wireshark. This demonstrated how Network Security Groups can control and filter network traffic. Once finished, I stopped the continuous ping in Command Prompt.*
-
+> This caused the ping to run continuously, allowing me to analyze the traffic in real time in Wireshark. This demonstrated how Network Security Groups can control and filter network traffic. Once finished, I stopped the continuous ping in Command Prompt.
 <img width="624" height="555" alt="image" src="https://github.com/user-attachments/assets/fc9719cf-d706-4871-8813-325d3d813736" />
 
 - While the ping was running, I disabled inbound `ICMP` traffic in the Network Security Group linked to the Linux VM
@@ -88,22 +90,25 @@ This includes:
 3. *Configure the rules*
 4. *Click Add*
 
-- *Result: All inbound `ICMP` (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows VM will fail*
 
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
+
+- *Result: All inbound `ICMP` (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows VM will fail*
+
 <img width="877" height="548" alt="Screenshot 2026-02-24 193855" src="https://github.com/user-attachments/assets/76b693af-162f-46f1-aa03-07ab91a953f6" />
 
-- *Re-enabling `ICMP` traffic (Allow `Ping`Again)*
+**Re-enabling `ICMP` traffic (Allow `Ping`Again)**
 
-- After enabling `ICMP` again, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again.
 1. Go to your Network Security Group 
 2. Locate the DenyInbound (ICMP) rule
 3. Click the delete (trash icon) on the rule
 4. Confirm by selecting Yes in the prompt
 
-**Result: The ICMP block rule is removed, so ping traffic is allowed again from your Windows VM to your Ubuntu VM**
 
 <img width="1490" height="576" alt="image" src="https://github.com/user-attachments/assets/0cc8f104-b0eb-459e-9a4b-233500259c2f" />
+
+- *Result: After re-enabling `ICMP`, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again.*
+
 <img width="777" height="535" alt="image" src="https://github.com/user-attachments/assets/a5af13de-76ab-416c-b06b-df151b5c6501" />
 
 ---
