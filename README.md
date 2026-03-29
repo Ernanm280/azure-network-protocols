@@ -107,7 +107,7 @@ This includes:
 
 <img width="877" height="548" alt="Screenshot 2026-02-24 193855" src="https://github.com/user-attachments/assets/76b693af-162f-46f1-aa03-07ab91a953f6" />
 
-- **Re-enabling `ICMP` traffic (Allow `Ping` again)**
+- **Re-enabling `ICMP` traffic (Allow Ping again)**
 
 1. *Within Azure, go to Linux VM's Network Security Group* 
 2. *Locate the DenyInbound (ICMP) rule*
@@ -148,17 +148,16 @@ This includes:
 
 **4. Observing DHCP Traffic**
 
-- On the Windows 10 VM, I went back to Wireshark and applied a `DHCP` filter to display only DHCP-related traffic. 
+- On the Windows 10 VM, I returned to Wireshark and applied a `DHCP` filter to display only DHCP-related traffic. 
 
 <img width="960" height="682" alt="Screenshot 2026-02-24 204137" src="https://github.com/user-attachments/assets/5dad524f-8a8f-469f-b5ed-71913330f7e6" />
 
-- After setting the filter, I opened `Command Prompt` within the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the network.
-- While the command was running, I observed `DHCP` traffic appearing in Wireshark.
-- The capture showed the communication between the virtual machine and the `DHCP` server as the system requested and received IP configuration information.
+- After setting the filter, I opened `Command Prompt` within the Windows 10 VM and entered the command `ipconfig /renew` to request a new IP address from the DHCP server.
+- While the command was running, `DHCP` traffic appeared in Wireshark. (The capture showed the exchange between the client and the DHCP server during the IP assignment process)
 
 <img width="1242" height="577" alt="Screenshot 2026-02-24 204753" src="https://github.com/user-attachments/assets/41814628-72d3-45a9-a9b2-7b0b100df463" />
 
-**This demonstrated how `DHCP` automatically assigns IP addresses and network settings to devices on a network.**
+**This demonstrates how DHCP dynamically assigns IP addresses and network configuration settings, enabling devices to join a network without manual configuration.**
 
 ---
 
