@@ -80,7 +80,7 @@ This includes:
  
 - *Initiate a continuous ICMP ping from the Windows 10 VM to the Ubuntu VM using the `ping -t` command in PowerShell*
 > [!NOTE]
-> This caused the ping to run continuously, allowing me to analyze the traffic in real time in Wireshark. This demonstrated how Network Security Groups can control and filter network traffic. Once finished, I stopped the continuous ping in Command Prompt.
+> This caused the ping to run continuously, allowing me to analyze the traffic in real time in Wireshark. This demonstrated how Network Security Groups can control and filter network traffic.
 <img width="624" height="555" alt="image" src="https://github.com/user-attachments/assets/fc9719cf-d706-4871-8813-325d3d813736" />
 
 - While the ping was running, I disabled inbound `ICMP` traffic in the Network Security Group linked to the Linux VM
