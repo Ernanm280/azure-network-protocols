@@ -43,24 +43,29 @@ This includes:
 
 **1. Observing ICMP Traffic**
   
-For this part of the lab, I observed `ICMP` traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol `RDP` from my Windows computer to connect to the Windows 10 VM in Azure. Once connected, I installed and opened Wireshark, then started a packet capture and applied the `ICMP` filter to show only `ICMP` traffic. Next, I obtained the private IP address of the Linux VM and used Command Prompt on the Windows 10 VM to ping it. While the ping was running, I observed the `ICMP` request and reply traffic in Wireshark. This is important because it confirmed that communication between the two virtual machines was successful. This allowed me to see how `ICMP` is used to test connectivity between systems within the virtual network.
+- *For this part of the lab, I observed `ICMP` traffic using Wireshark on my Windows 10 virtual machine. I used Remote Desktop Protocol `RDP` from my Windows computer to connect to the Windows 10 VM in Azure.*
 
 <img width="1898" height="788" alt="Screenshot 2026-02-24 185452" src="https://github.com/user-attachments/assets/d92f10d2-3ba4-427f-97ff-9a1f1e182b5e" />
+
+- *Once connected, I installed and opened Wireshark, then started a packet capture and applied the `ICMP` filter to show only `ICMP` traffic.*  
+
 <img width="1812" height="888" alt="image" src="https://github.com/user-attachments/assets/80508f41-8992-4105-828d-9798a3fb27ed" />
 <img width="1886" height="915" alt="image" src="https://github.com/user-attachments/assets/eb959b0f-783c-411d-894a-cd462450668f" />
 
-**Apply the `ICMP` filter in Wireshark:**
+- *Apply the `ICMP` filter in Wireshark:*
   
 <img width="1549" height="910" alt="image" src="https://github.com/user-attachments/assets/323c53f5-4739-415c-8b1d-3341100f01c9" />
 
- **Retrieve the private IP address of the Ubuntu VM (linux-vm) and attempt to ping it from within the Windows 10 VM**
-- Open your Linux VM in Azure
-- Go to the Overview / Properties tab
-- Look under Networking
-- Locate Private IP address (172.16.0.5)
+- *Retrieve the private IP address of the Ubuntu VM (linux-vm) and attempt to ping it from within the Windows 10 VM*
+1. *Open your Linux VM in Azure*
+2. *Go to the Overview / Properties tab*
+3. *Look under Networking*
+4. *Locate Private IP address (172.16.0.5)*
 
-**Result: You successfully found the VM’s private IP address**
-- **Observe ping requests and replies within WireShark:**
+- *Result: You successfully found the VM’s private IP address*
+- *Observe ping requests and replies within Wireshark:*
+
+*While the ping was running, I observed the `ICMP` request and reply traffic in Wireshark. This is important because it confirmed that communication between the two virtual machines was successful. This allowed me to see how `ICMP` is used to test connectivity between systems within the virtual network.*
   
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 <img width="1902" height="936" alt="image" src="https://github.com/user-attachments/assets/8e2fffb7-5d4c-4480-bd8d-72703a0e6181" />
