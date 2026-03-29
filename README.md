@@ -75,7 +75,9 @@ This includes:
 
 **2. Configuring a Firewall (Network Security Group)**
  
-- *Initiated a continuous ICMP ping from the Windows 10 VM to the Ubuntu VM using the `ping -t` command in PowerShell. This caused the ping to run nonstop so that I could analyze the traffic in real time in Wireshark. This demonstrated how Network Security Groups can control and filter network traffic. Once finished, I stopped the continuous ping in Command Prompt.*
+- *Initiated a continuous ICMP ping from the Windows 10 VM to the Ubuntu VM using the `ping -t` command in PowerShell*
+> [!NOTE]
+> This caused the ping to run continuously, allowing me to analyze the traffic in real time in Wireshark. This demonstrated how Network Security Groups can control and filter network traffic. Once finished, I stopped the continuous ping in Command Prompt.*
 
 <img width="624" height="555" alt="image" src="https://github.com/user-attachments/assets/fc9719cf-d706-4871-8813-325d3d813736" />
 
@@ -86,15 +88,14 @@ This includes:
 3. *Configure the rules*
 4. *Click Add*
 
-- *Result:
-All inbound `ICMP` (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows VM will fail*
+- *Result: All inbound `ICMP` (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows VM will fail*
 
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
 <img width="877" height="548" alt="Screenshot 2026-02-24 193855" src="https://github.com/user-attachments/assets/76b693af-162f-46f1-aa03-07ab91a953f6" />
 
 - *Re-enabling `ICMP` traffic (Allow `Ping`Again)*
 
-- After enabling `ICMP`it again, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again.
+- After enabling `ICMP` again, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again.
 1. Go to your Network Security Group 
 2. Locate the DenyInbound (ICMP) rule
 3. Click the delete (trash icon) on the rule
