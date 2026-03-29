@@ -69,7 +69,7 @@ This includes:
 - *Open PowerShell and `ping` Ubuntu VM's private IP address (172.16.0.5) from within the Windows 10 VM*
 - *While the ping is running on the Windows 10 VM, observe the `ICMP` request and reply traffic in Wireshark.*
 > [!NOTE]
-> This is important because it confirmed that communication between the two virtual machines was successful.
+> This confirmed that communication between the two virtual machines was successful.
   
 <img width="1902" height="936" alt="image" src="https://github.com/user-attachments/assets/8e2fffb7-5d4c-4480-bd8d-72703a0e6181" />
 
