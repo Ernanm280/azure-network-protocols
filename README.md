@@ -124,7 +124,7 @@ This includes:
 <img width="777" height="535" alt="image" src="https://github.com/user-attachments/assets/a5af13de-76ab-416c-b06b-df151b5c6501" />
 
 > [!NOTE]
-> This demonstrates how NSGs function as a firewall by controlling inbound and outbound traffic, directly affecting connectivity between networked systems.
+> This shows how NSGs function as a firewall by controlling inbound and outbound traffic, directly affecting connectivity between networked systems.
 ---
 
 **3. Observing SSH Traffic**
@@ -164,7 +164,7 @@ This includes:
 <img width="1242" height="577" alt="Screenshot 2026-02-24 204753" src="https://github.com/user-attachments/assets/41814628-72d3-45a9-a9b2-7b0b100df463" />
 
 > [!NOTE]
-> This demonstrates how DHCP dynamically assigns IP addresses and network configuration settings, enabling devices to join a network without manual configuration.
+> DHCP dynamically assigns IP addresses and network configuration settings, enabling devices to join a network without manual configuration.
 
 ---
 
