@@ -64,7 +64,7 @@ This includes:
 3. Check under **Networking**
 4. Locate Private IP address (**172.16.0.5**)
 
-- Result: You successfully found the Ubuntu VM's private IP address
+- **Result**: You successfully found the Ubuntu VM's private IP address
   
 <img width="1386" height="420" alt="Screenshot 2026-02-24 191138" src="https://github.com/user-attachments/assets/1ea9505d-eedc-4b10-9809-ca031e3f8875" />
 
@@ -105,7 +105,7 @@ This includes:
 
 <img width="1794" height="1087" alt="image" src="https://github.com/user-attachments/assets/6f38a1a0-cb20-4205-83f8-6a2371de62d4" />
 
-- Result: All inbound `ICMP` (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows 10 VM will fail
+- **Result**: All inbound `ICMP` (ping) traffic to your Ubuntu VM is now blocked, so ping requests from your Windows 10 VM will fail
 
 <img width="877" height="548" alt="Screenshot 2026-02-24 193855" src="https://github.com/user-attachments/assets/76b693af-162f-46f1-aa03-07ab91a953f6" />
 
@@ -119,7 +119,7 @@ This includes:
 
 <img width="1490" height="576" alt="image" src="https://github.com/user-attachments/assets/0cc8f104-b0eb-459e-9a4b-233500259c2f" />
 
-- Result: After re-enabling `ICMP`, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again
+- **Result**: After re-enabling `ICMP`, I returned to the Windows 10 VM and observed that the ping replies resumed, and Wireshark showed reply packets being received again
 
 <img width="777" height="535" alt="image" src="https://github.com/user-attachments/assets/a5af13de-76ab-416c-b06b-df151b5c6501" />
 
