@@ -102,7 +102,7 @@ I initiated a continuous ping from the Windows 10 VM to the Ubuntu VM (Private I
 <br>
 <br>
 
-While the ping was running, I configured the Network Security Group (NSG) associated with the Ubuntu VM to block inbound ICMP traffic.:
+While the continuous ping was running, I configured the Network Security Group (NSG) associated with the Ubuntu VM to block inbound ICMP traffic.:
 
 1. Navigate to the Ubuntu VM in Azure
 2. Open **Network Settings**
